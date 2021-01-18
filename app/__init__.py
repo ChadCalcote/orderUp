@@ -1,7 +1,7 @@
 from flask import Flask
 from .config import Configuration
 from .routes import orders, session
-from .models import db  #, Employee
+from .models import db, Employee
 from flask_login import LoginManager
 from flask_migrate import Migrate
 
@@ -16,8 +16,8 @@ login = LoginManager(app)
 login.login_view = "session.login"
 
 
-# @login.user_loader
-# def load_user(id):
-#     return Employee.query.get(int(id))
+@login.user_loader
+def load_user(id):
+    return Employee.query.get(int(id))
 
 
