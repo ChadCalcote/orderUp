@@ -1,18 +1,17 @@
 """create employees table
 
-Revision ID: 7108a7d5e64c
-Revises: 
-Create Date: 2021-01-18 12:21:00.804716
+Revision ID: e0409fe15b8b
+Revises:
+Create Date: 2021-01-18 15:05:28.353498
 
 """
 from alembic import op
 import sqlalchemy as sa
-from werkzeug.security import generate_password_hash, check_password_hash
-
+from werkzeug.security import generate_password_hash
 
 
 # revision identifiers, used by Alembic.
-revision = '7108a7d5e64c'
+revision = 'e0409fe15b8b'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -31,6 +30,8 @@ def upgrade():
 
     op.bulk_insert(employees_table, [
         {'name': 'Margot', 'employee_number': 1234, 'hashed_password': generate_password_hash('password')},
+        {'name': 'Billie', 'employee_number': 5678, 'hashed_password': generate_password_hash('password')},
+        {'name': 'Nana', 'employee_number': 9101, 'hashed_password': generate_password_hash('password')},
     ])
     # ### end Alembic commands ###
 

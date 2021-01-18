@@ -51,6 +51,7 @@ class MenuItem(db.Model):
 
     type = db.relationship("MenuItemType", back_populates="items")
     menu = db.relationship("Menu", back_populates="items")
+    details = db.relationship("OrderDetail", back_populates="menu_item")
 
 # MenuItem Type has many Menu Items
 class MenuItemType(db.Model):
@@ -61,7 +62,6 @@ class MenuItemType(db.Model):
     name = db.Column(db.String(20), nullable=False)
 
     items = db.relationship("MenuItem", back_populates="type")
-    details = db.relationship("OrderDetail", back_populates="menu_item")
 
 class Table(db.Model):
 

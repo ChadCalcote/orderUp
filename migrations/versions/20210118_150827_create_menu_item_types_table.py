@@ -1,8 +1,8 @@
 """create menu item types table
 
-Revision ID: ffa1ee37d248
-Revises: 7108a7d5e64c
-Create Date: 2021-01-18 14:13:14.992621
+Revision ID: d3664c23ae8c
+Revises: dfbf3b5f15ee
+Create Date: 2021-01-18 15:08:27.430311
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'ffa1ee37d248'
-down_revision = '7108a7d5e64c'
+revision = 'd3664c23ae8c'
+down_revision = 'dfbf3b5f15ee'
 branch_labels = None
 depends_on = None
 
@@ -25,9 +25,13 @@ def upgrade():
     )
 
     op.bulk_insert(menu_item_types_table, [
-        {'name': 'Beverages'},
+        {'name': 'Non-Alcoholic Drinks'},
         {'name': 'Entrees'},
-        {'name': 'Sides'}
+        {'name': 'Sides'},
+        {'name': 'Spirits'},
+        {'name': 'Beers'},
+        {'name': 'Wines'},
+        {'name': 'Appetizers'},
     ])
     # ### end Alembic commands ###
 

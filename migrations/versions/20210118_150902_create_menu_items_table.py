@@ -1,8 +1,8 @@
 """create menu items table
 
-Revision ID: 11261d3a8154
-Revises: 80d5cc3e3a7b
-Create Date: 2021-01-18 14:21:20.030769
+Revision ID: 6736558f712a
+Revises: d3664c23ae8c
+Create Date: 2021-01-18 15:09:02.269815
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '11261d3a8154'
-down_revision = '80d5cc3e3a7b'
+revision = '6736558f712a'
+down_revision = 'd3664c23ae8c'
 branch_labels = None
 depends_on = None
 
@@ -28,11 +28,11 @@ def upgrade():
     sa.ForeignKeyConstraint(['menu_type_id'], ['menu_item_types.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-
     op.bulk_insert(menu_items_table, [
-        {'name': 'French Fries', 'price': 3.50, 'menu_id': 2, 'menu_type_id': 3},
-        {'name': 'Dr. Pepper', 'price': 1.00, 'menu_id': 2, 'menu_type_id': 1},
-        {'name': 'Jambalaya', 'price': 21.98, 'menu_id': 3, 'menu_type_id': 2},
+        {'name': 'French Fries', 'price': 4.50, 'menu_id': 2, 'menu_type_id': 3},
+        {'name': 'Denver Omelette', 'price': 11.00, 'menu_id': 1, "menu_type_id": 2},
+        {'name': 'Espresso Martini', 'price': 8.00, 'menu_id': 4, "menu_type_id": 4},
+        {'name': 'Prime Rib', 'price': 16.00, 'menu_id': 3, "menu_type_id": 2},
     ])
     # ### end Alembic commands ###
 
