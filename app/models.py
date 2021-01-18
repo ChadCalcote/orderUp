@@ -13,6 +13,8 @@ class Employee(db.Model, UserMixin):
     employee_number = db.Column(db.Integer, nullable=False, unique=True)
     hashed_password = db.Column(db.String(100), nullable=False)
 
+    orders = db.relationship("Order", back_populates="employee")
+
     @property
     def password(self):
         return self.hashed_password
@@ -23,6 +25,7 @@ class Employee(db.Model, UserMixin):
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
+
 
 # # Menu has many Menu Items
 # class Menu(db.Model):
@@ -56,7 +59,8 @@ class Employee(db.Model, UserMixin):
 #     id = db.Column(db.Integer, primary_key=True)
 #     name = db.Column(db.String(20), nullable=False)
 
-#     items = db.relationship("MenuItem", back_populates="menu")
+#     items = db.relationship("MenuItem", back_populates="type")
+#     details = db.relationship("OrderDetail", back_populates="menu_item")
 
 # class Table(db.Model):
 
@@ -66,3 +70,30 @@ class Employee(db.Model, UserMixin):
 #     number = db.Column(db.Integer, nullable=False, unique=True)
 #     capacity = db.Column(db.Integer, nullable=False)
 
+#     orders = db.relationship("Order", back_populates="table")
+
+# Has one table, employee. Has many menuItems
+# class Order(db.Model):
+
+#     __tablename__ = "orders"
+
+#     id = db.Column(db.Integer, primary_key=True)
+#     employee_id = db.Column(db.Integer, db.ForeignKey('employees.id'), nullable=False)
+#     table_id = db.Column(db.Integer, db.ForeignKey('tables.id'), nullable=False)
+#     finished = db.Column(db.Boolean, nullable=False)
+
+
+#     employee = db.relationship("Employee", back_populates="orders")
+#     table = db.relationship("Table", back_populates="orders")
+#     details = db.relationship("OrderDetail", back_populates="order")
+
+# class OrderDetail(db.Model):
+
+#     __tablename__ = "order_details"
+
+#     id = db.Column(db.Integer, primary_key=True)
+#     order_id = db.Column(db.Integer, db.ForeignKey('orders.id'), nullable=False)
+#     menu_item_id = db.Column(db.Integer, db.ForeignKey('menu_items.id') nullable=False)
+
+#     order = db.relationship("Order", back_populates="details")
+#     menu_item = db.relationship("Order", back_populates="details")
