@@ -1,8 +1,8 @@
 """create order details table
 
-Revision ID: f16754f40288
-Revises: 42d84899e59c
-Create Date: 2021-01-18 14:38:38.153080
+Revision ID: a8b216c9a036
+Revises: 474f12d3d56d
+Create Date: 2021-01-18 15:10:56.350991
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'f16754f40288'
-down_revision = '42d84899e59c'
+revision = 'a8b216c9a036'
+down_revision = '474f12d3d56d'
 branch_labels = None
 depends_on = None
 
@@ -28,9 +28,10 @@ def upgrade():
     )
 
     op.bulk_insert(order_details_table, [
-        {'order_id': 1, 'menu_item_id': 3},
-        {'order_id': 2, 'menu_item_id': 2},
-        {'order_id': 3, 'menu_item_id': 1},
+        {'order_id': 6, 'menu_item_id': 2},
+        {'order_id': 4, 'menu_item_id': 4},
+        {'order_id': 1, 'menu_item_id': 2},
+        {'order_id': 5, 'menu_item_id': 3},
     ])
     # ### end Alembic commands ###
 

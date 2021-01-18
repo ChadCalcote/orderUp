@@ -1,8 +1,8 @@
 """create orders table
 
-Revision ID: 42d84899e59c
-Revises: 48c911fc95f3
-Create Date: 2021-01-18 14:34:19.080902
+Revision ID: 474f12d3d56d
+Revises: 71f7db59d970
+Create Date: 2021-01-18 15:10:18.459769
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '42d84899e59c'
-down_revision = '48c911fc95f3'
+revision = '474f12d3d56d'
+down_revision = '71f7db59d970'
 branch_labels = None
 depends_on = None
 
@@ -29,10 +29,12 @@ def upgrade():
     )
 
     op.bulk_insert(orders_table, [
-        {'employee_id': 1, 'table_id': 6, 'finished': False},
-        {'employee_id': 1, 'table_id': 10, 'finished': True},
-        {'employee_id': 1, 'table_id': 7, 'finished': False},
-        {'employee_id': 1, 'table_id': 3, 'finished': True},
+        {'employee_id': 3, 'table_id': 9, 'finished': False},
+        {'employee_id': 1, 'table_id': 6, 'finished': True},
+        {'employee_id': 1, 'table_id': 8, 'finished': False},
+        {'employee_id': 2, 'table_id': 2, 'finished': False},
+        {'employee_id': 2, 'table_id': 3, 'finished': True},
+        {'employee_id': 3, 'table_id': 5, 'finished': True},
     ])
     # ### end Alembic commands ###
 
