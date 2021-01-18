@@ -13,6 +13,7 @@ class Employee(db.Model, UserMixin):
     employee_number = db.Column(db.Integer, nullable=False, unique=True)
     hashed_password = db.Column(db.String(100), nullable=False)
 
+    # Edited This
     orders = db.relationship("Order", back_populates="employee")
 
     @property
@@ -96,4 +97,5 @@ class OrderDetail(db.Model):
     menu_item_id = db.Column(db.Integer, db.ForeignKey('menu_items.id'), nullable=False)
 
     order = db.relationship("Order", back_populates="details")
-    menu_item = db.relationship("Order", back_populates="details")
+    # Edited this
+    menu_item = db.relationship("MenuItem", back_populates="details")
